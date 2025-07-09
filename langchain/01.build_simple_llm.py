@@ -5,7 +5,7 @@ try:
     # load environment variables from .env file (requires `python-dotenv`)
     from dotenv import load_dotenv
 
-    load_dotenv(dotenv_path=".env", override=True)
+    load_dotenv(dotenv_path="../.env", override=True)
 except ImportError:
     pass
 
@@ -43,10 +43,10 @@ messages = [
 ]
 # 调用 llm 对象的 invoke 方法，传入消息列表并打印响应内容
 response = llm.invoke(messages)
-print(type(response), '\n', response)
-# print('*' * 40)
-# print(response.content)
-#
-# for token in llm.stream(messages):
-#     print(token.content, end="|")
+# print(type(response), '\n', response)
+print('*' * 40)
+print(response.content)
+
+for token in llm.stream(messages):
+    print(token.content, end="|")
 
